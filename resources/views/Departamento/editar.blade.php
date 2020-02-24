@@ -7,6 +7,7 @@
             @csrf
             <input type="text" name="name" placeholder="Nombre" class="form-control mb-2"
             value="{{$departamento->name}}"> 
+            <a href="{{route('departamento.index')}}" class="btn btn-secondary btn-outline-secondary">Volver</a>
             <button class="btn btn-warning " type="submit">Editar</button>
         </form>
     </div>

@@ -148,6 +148,7 @@ return [
 
     'attributes' => [
         'name' => 'nombre',
+        'departamento_id'=>'departamento',
     ],
 
 ];

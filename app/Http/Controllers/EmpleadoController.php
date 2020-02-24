@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Empleado;
 use App\Departamento;
 use DB;
+use Illuminate\Support\Facades\Validator ;
 
 class EmpleadoController extends Controller
 {
@@ -16,12 +17,21 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
+        
         /*$emp=DB::table('departamentos')->join('empleados','departamentos.id','=','empleados.departamento_id')->select('empleados.*','departamentos.name')->get();*/
+       /* 
         $empleadodesc=Empleado::where('estatus','A')->orderBy('created_at','desc')->paginate(4);
+        return view('Empleado.empleadoLista',compact('empleadoasc'));
+*/
         $empleadoasc=Empleado::where('estatus','A')->orderBy('created_at','asc')->paginate(4);
         return view('Empleado.empleadoLista',compact('empleadoasc'));
         
     }
+
+      
+    
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,8 +39,16 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
+        $departamento=Departamento::All();
+
+        if(count($departamento)<1){
+            $message = '!No exiten departamentos disponibles!';
+            flash($message)->warning()->important();
+            return redirect()->route('empleado.index');
+        }else{
         $departamento=Departamento::where('estatus','A')->get();
         return view('Empleado.agregar',compact('departamento'));
+        }
     }
 
     /**
@@ -41,16 +59,28 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
+        $v=Validator::make($request->all(),[
+            'nombre'=>'min:2|required',
+            'apellido'=>'min:2|required',
+            'cedula'=>'min:7|required|unique:empleados',
+            'departamento_id'=>'required'
+
+        ]);
+
+        if ($v->fails()) {
+            return \redirect()->back()->withInput()->withErrors($v->errors());
+        }
         
-        $empleado= new Empleado;
-        $empleado->cedula=$request->cedula;
-        $empleado->nombre=$request->nombre;
-        $empleado->apellido=$request->apellido;
-        $empleado->departamento_id=$request->departamento_id;
-        $empleado->save();
-        $message = '!Empleado creado  con exito!';
-        flash($message)->success();
-        return redirect()->route('empleado.index');
+            $empleado= new Empleado;
+            $empleado->cedula=$request->cedula;
+            $empleado->nombre=$request->nombre;
+            $empleado->apellido=$request->apellido;
+            $empleado->departamento_id=$request->departamento_id;
+            $empleado->save();
+            $message = '!Empleado creado  con exito!';
+            flash($message)->success()->important();
+            return redirect()->route('empleado.index');
+
     }
 
     /**
@@ -87,6 +117,19 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $v=Validator::make($request->all(),[
+            'nombre'=>'min:2|required',
+            'apellido'=>'min:2|required',
+            'cedula'=>'min:7|required|unique:empleados', 
+            //. $this->empleado,
+            'departamento_id'=>'required'
+
+        ]);
+
+        if ($v->fails()) {
+            return \redirect()->back()->withInput()->withErrors($v->errors());
+        }
+
         $empleado=Empleado::findOrFail($id);
         $empleado->cedula=$request->cedula;
         $empleado->nombre=$request->nombre;

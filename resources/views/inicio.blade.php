@@ -1,5 +1,14 @@
 @extends('layout');
 @section('seccion')
-<a href="{{route('departamento.index')}}">Departamento</a>
-<a href="{{route('empleado.index')}}">Empleado</a>
+<div class="row">
+    <div class="col-6">
+        <div class="card a">
+            <h2>Mini proyecto</h2>
+            <p>
+                Este es una prueba en la cual se podra adminitrar empleados y departamentos 
+            </p>
+        </div>
+    </div>
+
+</div>
 @endsection

@@ -11,12 +11,29 @@
     <title>MiniProyecto</title>
   </head>
   <body>
-   
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <!-- Brand/logo -->
+    <a class="navbar-brand" href="{{route('inicio')}}">Miniproyecto</a>
+      
+    
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('departamento.index')}}">Departamento</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('empleado.index')}}">Empleado</a>
+          </li>
+        </ul>
+     
+    </nav>
+        
       <div class="container">
+        <div class="img">
+          <img src="{{asset("image/undraw_grid_design_obmd.svg")}}">
+        </div>
          @yield('seccion')
       </div>
     
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

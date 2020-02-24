@@ -28,3 +28,4 @@ Route::name('imprimir')->get('/imprimir-pdf','Controller@imprimir');
 Route::get('/reporte',function(){
     return view('Reporte/reporteEmpleado');
 });
+

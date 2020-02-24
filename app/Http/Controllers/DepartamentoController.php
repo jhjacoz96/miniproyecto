@@ -43,7 +43,7 @@ class DepartamentoController extends Controller
     public function store(request $request)
     {
         $v=validator::make($request->all(),[
-            'name'=>'min:4|required|uniqued:departamentos'
+            'name'=>'min:4|unique:departamentos'
         ]);
 
         if ($v->fails()) {
@@ -56,8 +56,6 @@ class DepartamentoController extends Controller
         $departamento->name=$request->nombre;
         $departamento->codDep=$nombre[0] . $nombre[1]. 00 .$numero;
         $departamento->save();
-
-
 
         $message = "!El departamento " . $departamento->name . " se ha registrado con exito!";
         Flash($message)->success()->important();
@@ -83,6 +81,7 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
+        
         $departamento=Departamento::findOrFail($id);
         return view('departamento.editar',compact('departamento'));
     }
@@ -113,10 +112,25 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
+        $departamento=Departamento::find($id);
+        $empleado=$departamento->empleado;
+        $acum=0;
+        $acum=count($empleado);
+        if($acum>0){
+
+            $message = "!El departamento " . $departamento->name . " no puede ser eliminado porque posee " . $acum . " empleados asignados!";
+            
+            flash($message)->warning()->important();
+            return redirect()->route('departamento.index');
+
+        }else{
+
         $departamento=Departamento::findOrFail($id);
         $departamento->delete();
         $message = "!El departamento " . $departamento->name .  " ha sido eliminado con exito!";
         flash($message)->success()->important();
         return redirect()->route('departamento.index');
+
+        }
     }
 }
