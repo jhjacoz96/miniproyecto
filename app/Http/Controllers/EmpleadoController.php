@@ -23,15 +23,23 @@ class EmpleadoController extends Controller
         $empleadodesc=Empleado::where('estatus','A')->orderBy('created_at','desc')->paginate(4);
         return view('Empleado.empleadoLista',compact('empleadoasc'));
 */
-        $empleadoasc=Empleado::where('estatus','A')->orderBy('created_at','asc')->paginate(4);
+       /* if(\request()->ajax())
+        {
+            return datatables()->of(Empleado::latest()->get())->addColumn('accion',function($data){
+                $button='<button type="button" name="edit" id="'.$date->id.'" class"edit btn btn-primary btn-sm">Edit</button>';
+                $button.='&nbsp;nbsp;';
+                $button.='<button type="button" name="delete" id="'.$date->id.'" class"edit btn btn-primary btn-sm">Edit</button>';
+                return $button;
+            })->rawColumns([action])->make(true);
+        }*/
+
+        //$empleadoasc=Empleado::where('estatus','A')->orderBy('created_at','asc')->paginate(4);
+        $empleadoasc=Empleado::where('estatus','A')->get();
+        
         return view('Empleado.empleadoLista',compact('empleadoasc'));
         
+        
     }
-
-      
-    
-
-
     /**
      * Show the form for creating a new resource.
      *

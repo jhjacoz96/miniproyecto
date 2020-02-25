@@ -7,16 +7,16 @@
     <h3 class="mt-3">Gestionar empleados</h3><br>
     <div class="row">
         <div class="col-md-6">
-           <a href=""  class="btn  btn-outline-info btn-sm"> ascendente</a>
-           <a href="" class="btn btn-outline-info btn-sm">descendente</a>
-            <table class="table">
+           <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="emp_id">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Cédula</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
-                        <th scope="col">Departamento asociado</th>
+                       <th scope="col">Departamento asociado</th>
+                       <th scope="col">Fecha</th> 
                         <th scope="col">Acción</th>
                     </tr> 
                 </thead>
@@ -40,7 +40,9 @@
                             @endphp
                             {{$r}}
                         </td>
-                        
+                        <td>
+                           {{$item->created_at->format('d/m/Y')}} 
+                        </td>
                         <td>
                            <a href="{{route('empleado.edit',$item)}}" class="btn btn-warning btn-sm " ><i class="fas fa-user-edit"></i></a>
 
@@ -52,6 +54,7 @@
                               
                         </td>
                         
+                        
                     </tr> 
                     @if (count($empleadoasc)<1)
                             <h1>No hay empleados disponibles</h1>
@@ -60,14 +63,15 @@
                        
                 </tbody>
               </table>
-              {{$empleadoasc ?? ''->links()}}
+           </div>
+            
               <div class="float-right">
-                  <a href="{{route('imprimir')}}" class="btn btn-outline-info">Generar reporte</a>
-                <a href="{{route('empleado.create')}}" class="btn btn-info">
+                  <a href="{{route('imprimir')}}" class="btn btn-outline-info my-2">Generar reporte</a>
+                <a href="{{route('empleado.create')}}" class="btn btn-info my-2">
                     <i class="fa fa-user-plus"></i>
                     Agregar Empleado</a>
               </div>
         </div>   
     </div>
-
+    
 @endsection

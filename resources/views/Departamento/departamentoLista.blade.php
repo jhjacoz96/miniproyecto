@@ -8,7 +8,8 @@
     <h3 class="mt-3">Gestionar departamentos</h3><br>
         <div class="row">
             <div class="col-md-6">
-                <table class="table">
+                <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="emp_id">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -39,11 +40,13 @@
                         @endforeach
                     </tbody>
                   </table>
+                </div>
                   {{$departamento->links()}}
                   <div class="float-right">
-                      <a href="{{route('imprimir')}}" class="btn btn-outline-info">Generar reporte</a>
-                      <a href="{{route('departamento.create')}}" class="btn btn-info"><i class="fa fa-user-plus"></i>Agregar Departamento</a>
+                      <a href="{{route('imprimir')}}" class="btn btn-outline-info my-2">Generar reporte</a>
+                      <a href="{{route('departamento.create')}}" class="btn btn-info my-2"><i class="fa fa-user-plus"></i>Agregar Departamento</a>
                   </div>
             </div>   
         </div>
+        
 @endsection
