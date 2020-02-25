@@ -5,8 +5,7 @@
 <div class="container">
     @include('flash::message')
 </div>
-    <h3>Gestionar departamentos</h3><br>
-    <div class="container">
+    <h3 class="mt-3">Gestionar departamentos</h3><br>
         <div class="row">
             <div class="col-md-6">
                 <table class="table">
@@ -27,12 +26,12 @@
                                 <td>{{$item->name}}</td>
                                 <td>{{count($item->empleado)}}</td>
                                 <td>
-                                    <a href="{{route('departamento.edit',$item)}}" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="{{route('departamento.edit',$item)}}" class="btn btn-warning btn-sm"><i class="fas fa-user-edit"></i></a>
 
                                     <form action="{{route('departamento.destroy',$item)}}" method="POST" class="d-inline" >
                                         @method('DELETE')
                                         @csrf
-                                        <button class="btn btn-danger btn-sm" onclick="return confirm('¿Esta seguro que desea eliminar este departamento?')">Eliminar</button>
+                                        <button class="btn btn-danger btn-sm" onclick="return confirm('¿Esta seguro que desea eliminar este departamento?')"><i class="fas fa-trash-alt"></i></button>
                                       </form>
 
                                 </td>
@@ -41,9 +40,10 @@
                     </tbody>
                   </table>
                   {{$departamento->links()}}
-                  
-                <a href="{{route('departamento.create')}}" class="btn btn-success">Agregar Departamento</a>
+                  <div class="float-right">
+                      <a href="{{route('imprimir')}}" class="btn btn-outline-info">Generar reporte</a>
+                      <a href="{{route('departamento.create')}}" class="btn btn-info"><i class="fa fa-user-plus"></i>Agregar Departamento</a>
+                  </div>
             </div>   
         </div>
-    </div>
 @endsection

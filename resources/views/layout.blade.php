@@ -7,10 +7,43 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <title>MiniProyecto</title>
+    <style>
+      .img img{
+        width: 500px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position:absolute;
+        bottom:5px;
+        right:10px;
+        
+      }
+      .container{
+        
+        
+        display: grid;
+        
+        padding: 0 2rem;
+      }
+
+      .btn-info{
+        border-radius: 50px;
+      }
+      .btn-outline-info{
+        border-radius: 50px;
+      }
+
+ .promo-title{
+    font-size:  40px;
+    font-weight: 600;
+    margin-top:100px; 
+ }
+
+    </style>
   </head>
-  <body>
+  <body>    
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <!-- Brand/logo -->
     <a class="navbar-brand" href="{{route('inicio')}}">Miniproyecto</a>
@@ -26,8 +59,8 @@
         </ul>
      
     </nav>
-        
       <div class="container">
+
         <div class="img">
           <img src="{{asset("image/undraw_grid_design_obmd.svg")}}">
         </div>

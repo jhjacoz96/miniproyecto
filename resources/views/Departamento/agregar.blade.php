@@ -20,11 +20,15 @@
             <div class="col-md-4">
                     <form action="/departamento" method="post">
                         @csrf
-                        <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" 
-                        value="{{old('nombre')}}">
-                        {{$errors->first('name')}}<br>
-                        <a href="{{route('departamento.index')}}" class="btn btn-secondary btn-outline-secondary ">Volver</a>
-                        <button class="btn btn-info" type="submit">Agregar</button>
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="Nombre" class="form-control" 
+                            value="{{old('nombre')}}">
+                            {{$errors->first('name')}}
+                        </div>
+                        <div class="float-right">
+                            <a href="{{route('departamento.index')}}" class="btn btn-outline-secondary ">Volver</a>
+                            <button class="btn btn-info" type="submit"><i class="fa fa-user-plus"></i>Agregar</button>
+                        </div>
                     </form>
             </div>
         </div>

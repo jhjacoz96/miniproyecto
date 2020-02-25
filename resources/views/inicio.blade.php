@@ -1,14 +1,13 @@
 @extends('layout');
 @section('seccion')
-<div class="row">
-    <div class="col-6">
-        <div class="card a">
-            <h2>Mini proyecto</h2>
-            <p>
-                Este es una prueba en la cual se podra adminitrar empleados y departamentos 
-            </p>
+<section id="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="promo-title">Bienvenido</p>
+                <p>En este miniProyecto prodrás gestionar departamentos y los empleados de de dichos departamentos</p>
+            </div>
         </div>
     </div>
-
-</div>
+</section>
 @endsection

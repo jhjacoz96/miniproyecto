@@ -61,6 +61,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            /*Banner inicio*/
+
+            bc
         </style>
     </head>
     <body>

@@ -137,7 +137,7 @@ class EmpleadoController extends Controller
         $empleado->departamento_id=$request->departamento_id;
         $empleado->save();
         $message = '!Empleado modificado  con exito!';
-        flash($message)->success();
+        flash($message)->success()->important();
         return redirect()->route('empleado.index');
     }
 
@@ -152,7 +152,7 @@ class EmpleadoController extends Controller
         $empleado=Empleado::findOrFail($id);
         $empleado->delete();
         $message = '!Empleado eliminado  con exito!';
-        flash($message)->success();
+        flash($message)->success()->important();
         return redirect()->route('empleado.index');
         
     }

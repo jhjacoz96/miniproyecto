@@ -4,12 +4,10 @@
 <div >
     @include('flash::message')
 </div>
-
-<div class="container">
-    <h3>Gestionar empleados</h3><br>
+    <h3 class="mt-3">Gestionar empleados</h3><br>
     <div class="row">
         <div class="col-md-6">
-           <a href=""  class="btn  btn-outline-info btn-sm">ascendente</a>
+           <a href=""  class="btn  btn-outline-info btn-sm"> ascendente</a>
            <a href="" class="btn btn-outline-info btn-sm">descendente</a>
             <table class="table">
                 <thead>
@@ -44,12 +42,12 @@
                         </td>
                         
                         <td>
-                           <a href="{{route('empleado.edit',$item)}}" class="btn btn-warning btn-sm " >Editar</a>
+                           <a href="{{route('empleado.edit',$item)}}" class="btn btn-warning btn-sm " ><i class="fas fa-user-edit"></i></a>
 
-                            <form action="{{route('empleado.destroy',$item)}}" method="POST" class="d-inline" >
+                            <form action="{{route('empleado.destroy',$item)}}" method="POST"  >
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-danger btn-sm" onclick="return confirm('¿Esta seguro que desea eliminar este empleado?')">Eliminar</button>
+                                <button class="btn btn-danger btn-sm d-inline float-left" onclick="return confirm('¿Esta seguro que desea eliminar este empleado?')"><i class="fas fa-trash-alt"></i></button>
                               </form>
                               
                         </td>
@@ -63,9 +61,13 @@
                 </tbody>
               </table>
               {{$empleadoasc ?? ''->links()}}
-            <a href="{{route('empleado.create')}}" class="btn btn-success">Agregar Empleado</a>
-            <a href="{{route('imprimir')}}" class="btn btn-outline-info">Generar reporte</a>
+              <div class="float-right">
+                  <a href="{{route('imprimir')}}" class="btn btn-outline-info">Generar reporte</a>
+                <a href="{{route('empleado.create')}}" class="btn btn-info">
+                    <i class="fa fa-user-plus"></i>
+                    Agregar Empleado</a>
+              </div>
         </div>   
     </div>
-</div>
+
 @endsection
