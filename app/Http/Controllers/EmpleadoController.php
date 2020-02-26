@@ -7,7 +7,7 @@ use App\Empleado;
 use App\Departamento;
 use DB;
 use Illuminate\Support\Facades\Validator ;
-
+use App\Http\Requests\EmpleadoUpdateRequst;
 class EmpleadoController extends Controller
 {
     /**
@@ -123,20 +123,20 @@ class EmpleadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmpleadoUpdateRequst $request, $id)
     {
-        $v=Validator::make($request->all(),[
+       /* $v=Validator::make($request->all(),[
             'nombre'=>'min:2|required',
             'apellido'=>'min:2|required',
-            'cedula'=>'min:7|required|unique:empleados', 
-            //. $this->empleado,
+            'cedula'=>'min:7|required|unique:empleados,cedula,' 
+            . $this->empleado,
             'departamento_id'=>'required'
 
         ]);
 
         if ($v->fails()) {
             return \redirect()->back()->withInput()->withErrors($v->errors());
-        }
+        }*/
 
         $empleado=Empleado::findOrFail($id);
         $empleado->cedula=$request->cedula;

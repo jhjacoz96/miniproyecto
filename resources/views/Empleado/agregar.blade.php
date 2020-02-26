@@ -8,18 +8,18 @@
                 <form action="/empleado" method="post">
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="cedula" placeholder="Cédula" class="form-control mb-2" 
+                        <input type="text" id="cedula_emp" name="cedula" placeholder="Cédula" maxlength="8" onkeypress="return soloNumeros(event)" class="form-control mb-2" 
                         value="{{old('cedula')}}">
                         {!!$errors->first('cedula','<small>:message</small><br>')!!}
 
                     </div>
                     <div class="form-group">
-                        <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" 
+                        <input type="text" id="nombre_emp" name="nombre" maxlength="35" placeholder="Nombre" onkeypress="return soloLetras(event)" class="form-control mb-2" 
                         value="{{old('nombre')}}">
                         {!!$errors->first('nombre','<small>:message</small><br>')!!}
                     </div>
                     <div class="form-group">
-                        <input type="text" name="apellido" placeholder="Apellido" class="form-control mb-2" 
+                        <input type="text" id="apellido_emp" name="apellido" maxlength="35" placeholder="Apellido" onkeypress="return soloLetras(event)" class="form-control mb-2" 
                         value="{{old('apellido')}}">
                         {!!$errors->first('apellido','<small>:message</small><br>')!!}
                     </div>

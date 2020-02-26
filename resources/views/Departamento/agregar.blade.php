@@ -21,9 +21,9 @@
                     <form action="/departamento" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="text" name="nombre" placeholder="Nombre" class="form-control" 
+                            <input type="text" id="nombre" maxlength="35" name="nombre" onkeypress="return soloLetras(event)" placeholder="Nombre" class="form-control" 
                             value="{{old('nombre')}}">
-                            {{$errors->first('name')}}
+                            {!!$errors->first('nombre','<small>:message</small><br>')!!}
                         </div>
                         <div class="float-right">
                             <a href="{{route('departamento.index')}}" class="btn btn-outline-secondary ">Volver</a>

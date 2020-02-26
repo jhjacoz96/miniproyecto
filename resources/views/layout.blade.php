@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
+  <link rel="stylesheet" type="text/css" href="css/jquery.maxlength.css">
+
     <title>MiniProyecto</title>
     <style>
       .img img{
@@ -79,6 +82,13 @@
      <script src=" https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
    <script src="https://cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"></script>
+    
+   
+   <script type="text/javascript" src="js/jquery.plugin.js"></script>
+   <script type="text/javascript" src="js/jquery.maxlength.js"></script>
+
+
+    <script src="{{asset('js/validaciones.js')}}"></script>
     <script>
       $(document).ready(function() {
     $('#emp_id').DataTable({

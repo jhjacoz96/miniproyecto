@@ -7,9 +7,7 @@ use App\Empleado;
 use App\Departamento;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Validator as validator;
-use App\Http\Requests\DepartamentoStoreRequest;
-use App\Http\Requests\DepartamentoUpdateRequest;
-
+use App\Http\requests\DeparamentoRequest;
 class DepartamentoController extends Controller
 {
     /**
@@ -42,13 +40,15 @@ class DepartamentoController extends Controller
      */
     public function store(request $request)
     {
+
         $v=validator::make($request->all(),[
-            'name'=>'min:4|unique:departamentos'
+            'nombre'=>'required|min:4|unique:departamentos'
         ]);
 
         if ($v->fails()) {
             return \redirect()->back()->withInput()->withErrors($v->errors());
         }
+
     
         $departamento= new Departamento;
         $numero=count(Departamento::All())+1;
@@ -93,8 +93,9 @@ class DepartamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(request $request, $id)
+    public function update(DeparamentoRequest $request, $id)
     {
+
         $departamento=Departamento::findOrFail($id);
         $departamento->name=$request->name;
         $departamento->save();
